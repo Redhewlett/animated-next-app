@@ -3,20 +3,21 @@ import styled from "styled-components"
 
 // mix it up with styled components ✌
 const Container = styled(motion.div)`
+  height: max-content;
   h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
   }
 `
 
 export default function Title({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <Container style={{ x: 0 }} animate={{ x: 20 }}>
-      <motion.h2 style={{ x: 0 }} animate={{ x: 50 }} transition={{ type: "spring", stiffness: 100 }}>
+    <Container style={{ x: -40 }} animate={{ x: 0 }}>
+      <motion.h2 style={{ x: -30 }} animate={{ x: 0 }} transition={{ duration: 300, type: "spring", stiffness: 100 }}>
         {title}
       </motion.h2>
-      <motion.p style={{ x: 0 }} animate={{ x: 50 }} transition={{ type: "spring", stiffness: 100, delay: 0.1 }}>
+      <motion.h3 style={{ x: 20 }} animate={{ x: 0 }} transition={{ duration: 300, type: "spring", stiffness: 100, delay: 0.1 }}>
         {subtitle}
-      </motion.p>
+      </motion.h3>
     </Container>
   )
 }

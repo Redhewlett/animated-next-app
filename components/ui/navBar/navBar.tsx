@@ -2,10 +2,10 @@ import Link from "next/link"
 import styled from "styled-components"
 
 const Nav = styled.nav`
-  width: 100vw;
+  width: 100%;
   height: 3rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 10rem;
   padding: 2rem 1rem;
@@ -19,7 +19,6 @@ const Nav = styled.nav`
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    padding-right: 2rem;
     font-size: 1rem;
   }
 
