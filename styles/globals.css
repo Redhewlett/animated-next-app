@@ -7,14 +7,13 @@
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
 }
 
 body {
+  margin: 0;
   height: 100%;
   background-color: var(--body-bg);
   color: var(--primary-color);
@@ -31,5 +30,10 @@ h2 {
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.3rem;
+  line-height: 1.5;
 }
