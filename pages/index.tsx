@@ -26,20 +26,9 @@ function SectionTopThree() {
         However to me those titles are not in, because they are too mainstream.
       </h3>
       <div className={styles.home__topThree__container}>
-        <CardComponent background='yellowgreen' />
-
-        <div className={styles.home__topThree__card}>
-          <img src='/images/one-piece.jpg' alt='One Piece' />
-          <h4>One Piece</h4>
-        </div>
-        <div className={styles.home__topThree__card}>
-          <img src='/images/berserk.jpg' alt='Berserk' />
-          <h4>Berserk</h4>
-        </div>
-        <div className={styles.home__topThree__card}>
-          <img src='/images/bleach.jpg' alt='Bleach' />
-          <h4>Bleach</h4>
-        </div>
+        <CardComponent id='1' background='yellowgreen' />
+        <CardComponent id='2' background='yellowgreen' />
+        <CardComponent id='3' background='yellowgreen' />
       </div>
     </section>
   )
