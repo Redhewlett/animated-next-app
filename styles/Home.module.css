@@ -3,11 +3,12 @@
 }
 
 .home__topThree__container {
+  min-width: max-content;
   width: 100%;
-  height: 700px;
+  padding-top: 6rem;
   position: relative;
   display: grid;
-  place-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  background-color: cornflowerblue;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
+  gap: 2rem;
+  background-color: cadetblue;
 }

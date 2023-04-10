@@ -1,30 +1,50 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import Image, { StaticImageData } from "next/image"
 import styled from "styled-components"
 import { AnimatePresence, motion, useAnimation, Variants } from "framer-motion"
 
 const Card = styled(motion.div)`
-  width: 300px;
-  height: 430px;
+  width: 100%;
+  height: 80%;
+  padding: 0.5rem;
   position: relative;
+  display: flex;
   text-align: left;
   color: black;
   background: white;
   border-radius: 20px;
-  box-shadow: 0 0 1px hsl(0deg 0% 0% / 0.075), 0 0 2px hsl(0deg 0% 0% / 0.075), 0 0 4px hsl(0deg 0% 0% / 0.075), 0 0 8px hsl(0deg 0% 0% / 0.075),
-    0 0 16px hsl(0deg 0% 0% / 0.075);
+  box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.54);
+
   :hover {
     cursor: zoom-in;
   }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: calc(20px - 0.5rem);
+  }
+  article {
+    padding: 1rem;
+    height: 100%;
+    overflow: auto;
+  }
   &[data-isopen="true"] {
-    width: 600px;
+    width: 300%;
     position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.32);
+    img {
+      width: 30%;
+      height: 100%;
+    }
     :hover {
       cursor: pointer;
     }
   }
 `
 const CardContainer = styled(motion.div)`
-  width: 22rem;
   height: 34rem;
   display: flex;
   align-items: center;
@@ -38,7 +58,7 @@ const CardContainer = styled(motion.div)`
 
 const cardVariants: Variants = {
   offscreen: {
-    y: 0
+    y: 100
   },
   onscreen: {
     y: -50,
@@ -66,36 +86,57 @@ const cardVariants: Variants = {
   }
 }
 
-export default function CardComponent({ background, id }: { background: string; id: string }) {
+export interface CardData {
+  id: string
+  title: string
+  description: string
+  plot: string
+  image: string
+}
+
+export default function CardComponent({ data }: { data: CardData }) {
+  const { id, title, description, plot, image } = data
   const cardControls = useAnimation()
-  const [isClicked, setIsClicked] = useState(false)
+  const [isOpened, setIsOpened] = useState(false)
 
   const handleHover = () => {
     cardControls.start("hover")
   }
   const handleHoverOut = () => {
     cardControls.start("notHover")
-    if (isClicked) {
-      setIsClicked((prev) => !prev)
-    }
+    // if (isOpened) {
+    //   setIsOpened((prev) => !prev)
+    // }
   }
 
   return (
     <>
-      <CardContainer layout data-isopen={isClicked} animate={cardControls} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.8 }}>
+      <CardContainer layout data-isopen={isOpened} animate={cardControls} initial='offscreen' whileInView='onscreen' viewport={{ once: true, amount: 0.8 }}>
         <Card
           layout
           transition={{ duration: 0.6 }}
           variants={cardVariants}
-          data-isopen={isClicked}
-          onClick={() => setIsClicked((prev) => !prev)}
+          data-isopen={isOpened}
+          onClick={() => setIsOpened((prev) => !prev)}
           id={id}
           onHoverStart={handleHover}
           onHoverEnd={handleHoverOut}
         >
-          <motion.h1 transition={{ duration: 0.6 }} layout='position'>
-            Card {id}
-          </motion.h1>
+          <motion.img layout transition={{ duration: 0.6 }} src={image} alt={title} />
+
+          {isOpened && (
+            <motion.article>
+              <motion.h1 transition={{ duration: 0.6 }} layout='position'>
+                {title}
+              </motion.h1>
+              <motion.p transition={{ duration: 0.6 }} layout='position'>
+                {description}
+              </motion.p>
+              <motion.p transition={{ duration: 0.6 }} layout='position'>
+                {plot}
+              </motion.p>
+            </motion.article>
+          )}
         </Card>
       </CardContainer>
     </>
