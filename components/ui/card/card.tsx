@@ -24,17 +24,18 @@ const Card = styled(motion.div)`
     object-fit: cover;
     border-radius: calc(20px - 0.5rem);
   }
-  article {
-    padding: 1rem;
-    height: 100%;
-    overflow: auto;
-  }
   &[data-isopen="true"] {
-    width: 300%;
+    width: 100%;
     position: absolute;
-    top: 0;
+    top: 20%;
     left: 0;
     box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.32);
+    article {
+      width: 65%;
+      height: 100%;
+      padding: 1rem 3rem 1rem 1rem;
+      overflow: auto;
+    }
     img {
       width: 30%;
       height: 100%;
@@ -49,7 +50,6 @@ const CardContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   z-index: 1;
   &[data-isopen="true"] {
     z-index: 2;

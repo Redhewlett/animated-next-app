@@ -3,19 +3,16 @@ import styles from "@/styles/Home.module.css"
 import Title from "@/components/ui/title/title"
 import CardComponent from "@/components/ui/card/card"
 import { CardData } from "@/components/ui/card/card"
-// images
-import ajin_cover from "@/public/assets/images/ajin_cover.png"
-import my_hero_ac_cover from "@/public/assets/images/boku_no_hero_ac_cover.png"
-import knight_of_sidonia_cover from "@/public/assets/images/knight_of_sidonia_cover.png"
+import { motion } from "framer-motion"
 
 function Intro() {
   return (
     <section className={styles.home__intro}>
-      <p>
+      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
         Welcome to my website about manga ! I am passionate about Japanese comics and graphic novels.
         <br /> This website is dedicated to my stories. I will make you fall in love with these stories as much as I do.
         <br /> No spoilers !
-      </p>
+      </motion.p>
     </section>
   )
 }
@@ -51,12 +48,12 @@ function SectionTopThree() {
   return (
     <section className={styles.home__topThree}>
       <Title title='My top 3 of all times' />
-      <h3>
+      <motion.h3 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
         Some titles will forever be in my heart. I will never forget the first time I read them.
         <br /> I will never forget the emotions they gave me. Dragon Ball Z is one of those titles.
         <br />
         However to me those titles are not in, because they are too mainstream.
-      </h3>
+      </motion.h3>
       <div className={styles.home__topThree__container}>
         {topThree.map((data) => {
           return <CardComponent key={data.id} data={data} />
@@ -75,7 +72,7 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Title title='Welcome to My Favorite Manga' main />
+      <Title title='Welcome to My Favorite Manga' />
       <Intro />
       <SectionTopThree />
     </>

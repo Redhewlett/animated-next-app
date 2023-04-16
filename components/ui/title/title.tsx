@@ -13,9 +13,7 @@ const Container = styled(motion.div)`
   }
 `
 
-export default function Title({ title, main }: { title: string; main?: boolean }) {
-  // title should be short enough to fit in the image even with the calc below
-  const originalImageWidth = 850
+export default function Title({ title }: { title: string }) {
   return (
     <Container style={{ x: -40 }} animate={{ x: 0 }}>
       <motion.h2 style={{ x: -30 }} animate={{ x: 0 }} transition={{ duration: 300, type: "spring", stiffness: 100 }}>
